@@ -1,9 +1,9 @@
 import 'package:biztrack/backend/auth_controls.dart';
 import 'package:biztrack/components/button.dart';
 import 'package:biztrack/components/textfields.dart';
-import 'package:biztrack/pages/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'register_page.dart';
 
@@ -112,13 +112,12 @@ class LoginPage extends StatelessWidget {
               ),
 
               const SizedBox(
-                height: 24,
+                height: 54,
               ),
 
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()));
+                  Get.offAll(RegisterPage());
                 },
                 child: Text(
                   "New User? Register Here",

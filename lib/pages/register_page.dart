@@ -2,7 +2,8 @@ import "package:biztrack/backend/auth_controls.dart";
 import "package:biztrack/components/button.dart";
 import "package:biztrack/components/textfields.dart";
 import "package:flutter/material.dart";
-import 'package:biztrack/components/snackbar.dart';
+import "package:get/get.dart";
+
 import 'login_page.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -116,8 +117,6 @@ class RegisterPage extends StatelessWidget {
                   // authenticate.createUserWithEmailAndPassword(
                   //     email: emailController.text,
                   //     password: passwordController.text);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: ((context) => LoginPage())));
                 },
               ),
 
@@ -127,8 +126,7 @@ class RegisterPage extends StatelessWidget {
 
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginPage()));
+                  Get.offAll(LoginPage());
                 },
                 child: Text(
                   "Already a user? Log In",

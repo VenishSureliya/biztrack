@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
               const Text("Home Screen"),
               ElevatedButton(
                   onPressed: () async {
-                    await AuthController.credentials.signOut();
+                    await AuthController.logOut();
                   },
                   child: const Text("Logout"))
             ],

@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
 
 import 'package:biztrack/components/show_snackbar.dart';
-import 'package:biztrack/components/snackbar.dart';
 import 'package:biztrack/pages/home_page.dart';
+import 'package:biztrack/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,9 +17,7 @@ class AuthController extends GetxController {
     try {
       await credentials.createUserWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
-      const Snackbar(
-        snackMessage: "Signup successful!",
-      );
+      Get.offAll(() => LoginPage());
       print("SINGUP SUCCESSFUL");
     } catch (exception) {
       print(exception);
@@ -32,9 +30,14 @@ class AuthController extends GetxController {
           email: emailController.text, password: passwordController.text);
       print("SIGNIN SUCCESSFUL");
       const ShowSnackbar(snackMessage: "Signed in successfully");
-      Get.offAll(const HomePage());
+      Get.offAll(() => const HomePage());
     } catch (exception) {
       print(exception);
     }
+  }
+
+  static logOut() async {
+    await FirebaseAuth.instance.signOut();
+    Get.offAll(() => LoginPage());
   }
 }
