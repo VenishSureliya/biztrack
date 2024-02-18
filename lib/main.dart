@@ -1,3 +1,4 @@
+import 'package:biztrack/backend/auth_controls.dart';
 import 'package:biztrack/pages/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, AsyncSnapshot<User?> snapshot) {
           if (snapshot.hasData && snapshot.data != null) {
-            return const HomePage();
+            return HomePage();
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(),

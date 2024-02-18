@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:js';
+
 import 'package:biztrack/pages/home_page.dart';
 import 'package:biztrack/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,6 +30,7 @@ class AuthController extends GetxController {
       await credentials.signInWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
       print("SIGNIN SUCCESSFUL");
+
       Get.offAll(() => const HomePage());
     } catch (exception) {
       print(exception);
