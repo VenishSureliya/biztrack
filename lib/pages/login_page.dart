@@ -1,7 +1,6 @@
 import 'package:biztrack/backend/auth_controls.dart';
 import 'package:biztrack/components/button.dart';
 import 'package:biztrack/components/textfields.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -117,6 +116,7 @@ class LoginPage extends StatelessWidget {
 
               GestureDetector(
                 onTap: () {
+                  AuthController.clearCredentials();
                   Get.offAll(RegisterPage());
                 },
                 child: Text(
@@ -129,12 +129,5 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> login() async {
-    final authenticate = FirebaseAuth.instance;
-
-    authenticate.signInWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text);
   }
 }
