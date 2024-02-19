@@ -1,4 +1,4 @@
-import 'package:biztrack/backend/auth_controls.dart';
+import 'package:biztrack/backend/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () async {
-                    await AuthController.logOut();
+                    await AuthRepo.instance.logout();
                   },
                   child: const Text("Logout"))
             ],

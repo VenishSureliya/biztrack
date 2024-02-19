@@ -1,7 +1,7 @@
 import 'package:biztrack/backend/auth_controls.dart';
+import 'package:biztrack/backend/auth_repo.dart';
 import 'package:biztrack/components/button.dart';
 import 'package:biztrack/components/textfields.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,8 +11,8 @@ class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
   //TEXT EDITING CONTROLLERS
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final emailController = AuthController.instance.emailAddress;
+  final passwordController = AuthController.instance.password;
 
   //USER SIGN IN FUNCTION
 
@@ -57,7 +57,9 @@ class LoginPage extends StatelessWidget {
 
               //USERNAME TEXT FIELD
               TextFields(
-                controller: AuthController.emailController,
+                controller: AuthController.instance.emailAddress,
+                prefixIcon: const Icon(Icons.face),
+                // controller: AuthController.emailController,
                 hintText: "Email",
                 obscureText: false,
               ),
@@ -68,7 +70,8 @@ class LoginPage extends StatelessWidget {
 
               //PASSWORD TEXT FIELD
               TextFields(
-                controller: AuthController.passwordController,
+                prefixIcon: const Icon(Icons.lock_outline),
+                controller: AuthController.instance.password,
                 hintText: "Password",
                 obscureText: true,
               ),
@@ -101,7 +104,10 @@ class LoginPage extends StatelessWidget {
               Button(
                 buttonText: "Login",
                 onTap: () {
-                  AuthController.logIn(AuthController.displayNameController.text);
+                  AuthController.instance
+                      .loginUser(emailController.text, passwordController.text);
+                  // AuthController.logIn(
+                  //     AuthController.displayNameController.text);
                   // if (AuthController.emailController.text.isNotEmpty &&
                   //     AuthController.passwordController.text.length > 6) {
 
@@ -117,7 +123,7 @@ class LoginPage extends StatelessWidget {
 
               GestureDetector(
                 onTap: () {
-                  AuthController.clearCredentials();
+                  // AuthController.clearCredentials();
                   Get.offAll(RegisterPage());
                 },
                 child: Text(
