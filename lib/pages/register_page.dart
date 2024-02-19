@@ -10,6 +10,7 @@ class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
 
   //TEXT EDITING CONTROLLERS
+  final displaNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -53,6 +54,17 @@ class RegisterPage extends StatelessWidget {
 
               const SizedBox(
                 height: 30,
+              ),
+
+              //USERNAME TEXT FIELD
+              TextFields(
+                controller: AuthController.displayNameController,
+                hintText: "Enter username",
+                obscureText: false,
+              ),
+
+              const SizedBox(
+                height: 10,
               ),
 
               //USERNAME TEXT FIELD
@@ -112,7 +124,7 @@ class RegisterPage extends StatelessWidget {
               Button(
                 buttonText: "Register",
                 onTap: () {
-                  AuthController.signUp();
+                  AuthController.signUp(AuthController.displayNameController);
                   // final authenticate = FirebaseAuth.instance;
                   // authenticate.createUserWithEmailAndPassword(
                   //     email: emailController.text,

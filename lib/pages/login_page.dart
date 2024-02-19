@@ -1,6 +1,7 @@
 import 'package:biztrack/backend/auth_controls.dart';
 import 'package:biztrack/components/button.dart';
 import 'package:biztrack/components/textfields.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -100,7 +101,7 @@ class LoginPage extends StatelessWidget {
               Button(
                 buttonText: "Login",
                 onTap: () {
-                  AuthController.logIn();
+                  AuthController.logIn(AuthController.displayNameController.text);
                   // if (AuthController.emailController.text.isNotEmpty &&
                   //     AuthController.passwordController.text.length > 6) {
 
