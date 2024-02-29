@@ -6,7 +6,7 @@ class UserRepo extends GetxController {
 
   final dataBase = FirebaseFirestore.instance;
 
-  Future addUserDetails(String firstName, lastName, phoneNumber) async {
+  Future addUserDetails(String firstName,String lastName,String phoneNumber) async {
     await FirebaseFirestore.instance.collection('commercialUsers').add({
       'firstName': firstName,
       'lastName': lastName,

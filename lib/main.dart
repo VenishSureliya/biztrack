@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           textSelectionTheme:
               const TextSelectionThemeData(cursorColor: Color(0xFF006be9))),
+              
     );
   }
 }

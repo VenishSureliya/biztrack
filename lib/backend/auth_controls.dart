@@ -11,9 +11,8 @@ class AuthController extends GetxController {
   final password = TextEditingController();
   final phoneNumber = TextEditingController();
 
-  get onPhoneNumberChanged => null;
-
-  void registerUser(String emailAddress, password) {
+  void registerUser(
+      String emailAddress, password, firstName, lastName, phoneNumber) {
     AuthRepo.instance.createUserWithEmailAndPassword(emailAddress, password);
     UserRepo.instance.addUserDetails(
       firstName.text,
