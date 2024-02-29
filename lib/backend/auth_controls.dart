@@ -11,13 +11,14 @@ class AuthController extends GetxController {
   final password = TextEditingController();
   final phoneNumber = TextEditingController();
 
-  void registerUser(String emailAddress, password) {
+  void registerUser(
+      String emailAddress, password, firstName, lastName, phoneNumber) {
     AuthRepo.instance.createUserWithEmailAndPassword(emailAddress, password);
     UserRepo.instance.addUserDetails(
-    firstName.text,
-    lastName.text,
-    phoneNumber.text,
-);
+      firstName.text,
+      lastName.text,
+      phoneNumber.text,
+    );
 
     loginUser(emailAddress, password);
   }

@@ -77,8 +77,8 @@ class RegisterPage extends StatelessWidget {
               ),
               Button(
                   onTap: () {
-                    AuthController.instance.registerUser(
-                        emailController.text, passwordController.text);
+                    // AuthController.instance.registerUser(firstName: 
+                    //     emailController.text, passwordController.text);
                   },
                   buttonText: "Register")
             ],

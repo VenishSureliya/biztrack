@@ -1,7 +1,7 @@
 import 'package:biztrack/backend/auth_controls.dart';
-import 'package:biztrack/backend/auth_repo.dart';
 import 'package:biztrack/components/button.dart';
 import 'package:biztrack/components/textfields.dart';
+import 'package:biztrack/pages/test_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -30,12 +30,15 @@ class LoginPage extends StatelessWidget {
               // ),
 
               //ICON
-              const Text(
-                "Biztrack",
-                style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.w900,
-                    color: Color(0xFF006be9)),
+              GestureDetector(
+                onTap: () => (Get.offAll(TestUi())),
+                child: const Text(
+                  "Biztrack",
+                  style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w900,
+                      color: Color(0xFF006be9)),
+                ),
               ),
 
               const SizedBox(
@@ -57,6 +60,7 @@ class LoginPage extends StatelessWidget {
 
               //USERNAME TEXT FIELD
               TextFields(
+                keyboardType: TextInputType.emailAddress,
                 controller: AuthController.instance.emailAddress,
                 prefixIcon: const Icon(Icons.face),
                 // controller: AuthController.emailController,
@@ -70,6 +74,7 @@ class LoginPage extends StatelessWidget {
 
               //PASSWORD TEXT FIELD
               TextFields(
+                keyboardType: TextInputType.text,
                 prefixIcon: const Icon(Icons.lock_outline),
                 controller: AuthController.instance.password,
                 hintText: "Password",
