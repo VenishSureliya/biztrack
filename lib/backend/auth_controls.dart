@@ -1,48 +1,34 @@
-// ignore_for_file: avoid_print
-
-import 'package:biztrack/pages/home_page.dart';
-import 'package:biztrack/pages/login_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:biztrack/backend/auth_repo.dart';
+import 'package:biztrack/backend/user_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
-  static TextEditingController emailController = TextEditingController();
-  static TextEditingController passwordController = TextEditingController();
+  static AuthController get instance => Get.find();
+  final firstName = TextEditingController();
+  final lastName = TextEditingController();
+  final emailAddress = TextEditingController();
+  final password = TextEditingController();
+  final phoneNumber = TextEditingController();
 
-  static final credentials = FirebaseAuth.instance;
+  void registerUser(
+      String emailAddress, password, firstName, lastName, phoneNumber) {
+    AuthRepo.instance.createUserWithEmailAndPassword(emailAddress, password);
+    UserRepo.instance.addUserDetails(
+      firstName.text,
+      lastName.text,
+      phoneNumber.text,
+    );
 
-  static void signUp() async {
-    try {
-      await credentials.createUserWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text);
-      AuthController.logIn();
-      print("SINGUP SUCCESSFUL");
-    } catch (exception) {
-      print(exception);
-    }
+    loginUser(emailAddress, password);
   }
 
-  static void logIn() async {
-    try {
-      await credentials.signInWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text);
-      print("SIGNIN SUCCESSFUL");
-      Get.offAll(() => const HomePage());
-    } catch (exception) {
-      print(exception);
-    }
+  void loginUser(String emailAddress, password) {
+    AuthRepo.instance.loginUserWithEmailAndPassword(emailAddress, password);
   }
 
-  static logOut() async {
-    await FirebaseAuth.instance.signOut();
-    emailController.clear();
-    passwordController.clear();
-    Get.offAll(() => LoginPage());
-  }
-
-  static clearCredentials() async {
-    AuthController.emailController.clear();
-    AuthController.passwordController.clear();
+  void clearCredentials() async {
+    AuthController.instance.emailAddress.clear();
+    AuthController.instance.password.clear();
   }
 }

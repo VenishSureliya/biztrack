@@ -1,6 +1,7 @@
 import 'package:biztrack/backend/auth_controls.dart';
 import 'package:biztrack/components/button.dart';
 import 'package:biztrack/components/textfields.dart';
+import 'package:biztrack/pages/test_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,8 +11,8 @@ class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
   //TEXT EDITING CONTROLLERS
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final emailController = AuthController.instance.emailAddress;
+  final passwordController = AuthController.instance.password;
 
   //USER SIGN IN FUNCTION
 
@@ -29,12 +30,15 @@ class LoginPage extends StatelessWidget {
               // ),
 
               //ICON
-              const Text(
-                "Biztrack",
-                style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.w900,
-                    color: Color(0xFF006be9)),
+              GestureDetector(
+                onTap: () => (Get.offAll(TestUi())),
+                child: const Text(
+                  "Biztrack",
+                  style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w900,
+                      color: Color(0xFF006be9)),
+                ),
               ),
 
               const SizedBox(
@@ -56,7 +60,10 @@ class LoginPage extends StatelessWidget {
 
               //USERNAME TEXT FIELD
               TextFields(
-                controller: AuthController.emailController,
+                keyboardType: TextInputType.emailAddress,
+                controller: AuthController.instance.emailAddress,
+                prefixIcon: const Icon(Icons.face),
+                // controller: AuthController.emailController,
                 hintText: "Email",
                 obscureText: false,
               ),
@@ -67,7 +74,9 @@ class LoginPage extends StatelessWidget {
 
               //PASSWORD TEXT FIELD
               TextFields(
-                controller: AuthController.passwordController,
+                keyboardType: TextInputType.text,
+                prefixIcon: const Icon(Icons.lock_outline),
+                controller: AuthController.instance.password,
                 hintText: "Password",
                 obscureText: true,
               ),
@@ -100,7 +109,10 @@ class LoginPage extends StatelessWidget {
               Button(
                 buttonText: "Login",
                 onTap: () {
-                  AuthController.logIn();
+                  AuthController.instance
+                      .loginUser(emailController.text, passwordController.text);
+                  // AuthController.logIn(
+                  //     AuthController.displayNameController.text);
                   // if (AuthController.emailController.text.isNotEmpty &&
                   //     AuthController.passwordController.text.length > 6) {
 
@@ -116,7 +128,7 @@ class LoginPage extends StatelessWidget {
 
               GestureDetector(
                 onTap: () {
-                  AuthController.clearCredentials();
+                  // AuthController.clearCredentials();
                   Get.offAll(RegisterPage());
                 },
                 child: Text(

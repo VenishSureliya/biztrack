@@ -1,27 +1,21 @@
-import "package:biztrack/backend/auth_controls.dart";
-import "package:biztrack/backend/form_validation.dart";
-import "package:biztrack/components/button.dart";
-import "package:biztrack/components/textfields.dart";
-import "package:flutter/material.dart";
-import "package:get/get.dart";
+import 'package:biztrack/backend/auth_controls.dart'; // Import your authentication logic
+import 'package:biztrack/backend/form_validation.dart'; // Import your form validation logic
+import 'package:biztrack/components/button.dart'; // Import your button component
+import 'package:biztrack/components/textfields.dart';
+import 'package:flutter/material.dart';
 
-class RegisterPage extends StatelessWidget {
-  RegisterPage({super.key});
+class TestUi extends StatefulWidget {
+  const TestUi({super.key});
 
-  //TEXT EDITING CONTROLLERS
-  final firstNameController = AuthController.instance.firstName;
-  final lastNameController = AuthController.instance.lastName;
-  final emailController = AuthController.instance.emailAddress;
-  final passwordController = AuthController.instance.password;
-  final phoneNumberController = AuthController.instance.phoneNumber;
+  @override
+  State<TestUi> createState() => _TestUiState();
+}
 
-  //USER SIGN IN FUNCTION
-  void signUserIn() {}
+class _TestUiState extends State<TestUi> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AuthController());
-    final formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
