@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (currentUser != null) ...[
-                Text("Logged in as ${currentUser.email}!"),
+                Text("Hey ${currentUser.email}!"),
               ] else ...[
                 const Text("Please sign in to access your information."),
               ],
