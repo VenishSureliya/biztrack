@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("Home Screen"),
+              const Text("Home"),
               ElevatedButton(
                   onPressed: () async {
                     await AuthController.logOut();
