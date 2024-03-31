@@ -110,7 +110,13 @@ class LoginPage extends StatelessWidget {
                 buttonText: "Login",
                 onTap: () {
                   AuthController.instance
-                      .loginUser(emailController.text, passwordController.text);
+                      .loginUser(
+                        emailController.text,
+                        passwordController.text,
+                        onSuccess: () {
+                          // Add your success logic here
+                        },
+                      );
                   // AuthController.logIn(
                   //     AuthController.displayNameController.text);
                   // if (AuthController.emailController.text.isNotEmpty &&

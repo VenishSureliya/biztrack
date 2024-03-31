@@ -20,10 +20,10 @@ class AuthController extends GetxController {
       phoneNumber.text,
     );
 
-    loginUser(emailAddress, password);
+    loginUser(emailAddress, password, onSuccess: () {});
   }
 
-  void loginUser(String emailAddress, password) {
+  void loginUser(String emailAddress, password, {required Null Function() onSuccess}) {
     AuthRepo.instance.loginUserWithEmailAndPassword(emailAddress, password);
   }
 
