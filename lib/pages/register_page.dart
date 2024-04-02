@@ -15,8 +15,8 @@ class RegisterPage extends StatelessWidget {
   final passwordController = AuthController.instance.password;
   final phoneNumberController = AuthController.instance.phoneNumber;
 
-  //USER SIGN IN FUNCTION
-  void signUserIn() {}
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -124,18 +124,16 @@ class RegisterPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 54),
 
-                  // Login link
-                  RichText(
-                    text: TextSpan(
-                      text: "Already a user? ",
-                      style: TextStyle(color: Colors.grey[600], fontSize: 15),
-                      children: const [
-                        TextSpan(
-                          text: 'Login',
-                        ),
-                      ],
-                    ),
-                  ),
+                  GestureDetector(
+                onTap: () {
+                  // AuthController.clearCredentials();
+                  Get.offAll(RegisterPage());
+                },
+                child: Text(
+                  "New User? Register Here",
+                  style: TextStyle(color: Colors.grey[600], fontSize: 15),
+                ),
+              )
                 ],
               ),
             ),
