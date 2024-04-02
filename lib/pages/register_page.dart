@@ -2,6 +2,7 @@ import "package:biztrack/backend/auth_controls.dart";
 import "package:biztrack/backend/form_validation.dart";
 import "package:biztrack/components/button.dart";
 import "package:biztrack/components/textfields.dart";
+import "package:biztrack/pages/login_page.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
@@ -16,8 +17,8 @@ class RegisterPage extends StatelessWidget {
   final phoneNumberController = AuthController.instance.phoneNumber;
   final displayNameComtroller = AuthController.instance.displayName;
 
-  //USER SIGN IN FUNCTION
-  void signUserIn() {}
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -125,18 +126,16 @@ class RegisterPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 54),
 
-                  // Login link
-                  RichText(
-                    text: TextSpan(
-                      text: "Already a user? ",
-                      style: TextStyle(color: Colors.grey[600], fontSize: 15),
-                      children: const [
-                        TextSpan(
-                          text: 'Login',
-                        ),
-                      ],
-                    ),
-                  ),
+                  GestureDetector(
+                onTap: () {
+                  // AuthController.clearCredentials();
+                  Get.offAll(LoginPage());
+                },
+                child: Text(
+                  "New User? Register Here",
+                  style: TextStyle(color: Colors.grey[600], fontSize: 15),
+                ),
+              )
                 ],
               ),
             ),
