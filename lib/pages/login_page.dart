@@ -129,7 +129,7 @@ class LoginPage extends StatelessWidget {
 
               GestureDetector(
                 onTap: () {
-                  // AuthController.clearCredentials();
+                  AuthController.instance.clearCredentials();
                   Get.offAll(RegisterPage());
                 },
                 child: Text(

@@ -17,9 +17,6 @@ class RegisterPage extends StatelessWidget {
   final phoneNumberController = AuthController.instance.phoneNumber;
   final displayNameComtroller = AuthController.instance.displayName;
 
-
-
-
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(AuthController());
@@ -127,15 +124,15 @@ class RegisterPage extends StatelessWidget {
                   const SizedBox(height: 54),
 
                   GestureDetector(
-                onTap: () {
-                  // AuthController.clearCredentials();
-                  Get.offAll(LoginPage());
-                },
-                child: Text(
-                  "New User? Register Here",
-                  style: TextStyle(color: Colors.grey[600], fontSize: 15),
-                ),
-              )
+                    onTap: () {
+                      AuthController.instance.clearCredentials();
+                      Get.offAll(LoginPage());
+                    },
+                    child: Text(
+                      "New User? Register Here",
+                      style: TextStyle(color: Colors.grey[600], fontSize: 15),
+                    ),
+                  )
                 ],
               ),
             ),
