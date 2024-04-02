@@ -2,6 +2,7 @@ import 'package:biztrack/backend/auth_controls.dart';
 import 'package:biztrack/components/button.dart';
 import 'package:biztrack/components/textfields.dart';
 import 'package:biztrack/pages/test_ui.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -135,7 +136,8 @@ class LoginPage extends StatelessWidget {
                   "New User? Register Here",
                   style: TextStyle(color: Colors.grey[600], fontSize: 15),
                 ),
-              )
+              ),
+              
             ],
           ),
         ),

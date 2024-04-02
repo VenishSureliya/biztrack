@@ -14,6 +14,7 @@ class RegisterPage extends StatelessWidget {
   final emailController = AuthController.instance.emailAddress;
   final passwordController = AuthController.instance.password;
   final phoneNumberController = AuthController.instance.phoneNumber;
+  final displayNameComtroller = AuthController.instance.displayName;
 
   //USER SIGN IN FUNCTION
   void signUserIn() {}
@@ -55,7 +56,7 @@ class RegisterPage extends StatelessWidget {
                   // User information fields with validation
                   TextFields(
                     keyboardType: TextInputType.name,
-                    controller: AuthController.instance.firstName,
+                    controller: AuthController.instance.displayName,
                     prefixIcon: const Icon(Icons.first_page),
                     hintText: "First name",
                     obscureText: false,

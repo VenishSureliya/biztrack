@@ -20,16 +20,19 @@ class AuthRepo extends GetxController {
   }
 
   setInitialPage(User? user) {
-    user == null
-        ? Get.offAll(() => LoginPage())
-        : Get.offAll(() => const HomePage());
+    user == null ? Get.offAll(() => LoginPage()) : Get.offAll(() => HomePage());
   }
+
+
 
   Future<void> createUserWithEmailAndPassword(String email, password) async {
     try {
       await authenticate.createUserWithEmailAndPassword(
           email: email, password: password);
-          firebaseUser.value != null ? Get.offAll(() => HomePage()) : Get.to(() => LoginPage())?.then((value) => AuthController.instance.clearCredentials());
+      firebaseUser.value != null
+          ? Get.offAll(() => HomePage())
+          : Get.to(() => LoginPage())
+              ?.then((value) => AuthController.instance.clearCredentials());
     } on FirebaseAuthException catch (e) {
       final exception = AuthenticationExceptions.code(e.code);
       print('FIREBASE AUTH EXCEPTION -  ${exception.message}');
@@ -43,9 +46,11 @@ class AuthRepo extends GetxController {
 
   Future<void> loginUserWithEmailAndPassword(String email, password) async {
     try {
-      await authenticate.signInWithEmailAndPassword(
-          email: AuthController.instance.emailAddress.text, password: AuthController.instance.password.text).then((value) => AuthController.instance.clearCredentials());
-      
+      await authenticate
+          .signInWithEmailAndPassword(
+              email: AuthController.instance.emailAddress.text,
+              password: AuthController.instance.password.text)
+          .then((value) => AuthController.instance.clearCredentials());
     } on FirebaseAuthException catch (exception) {
     } catch (_) {}
   }

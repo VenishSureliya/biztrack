@@ -10,14 +10,15 @@ class AuthController extends GetxController {
   final emailAddress = TextEditingController();
   final password = TextEditingController();
   final phoneNumber = TextEditingController();
+  final displayName = TextEditingController();
 
   void registerUser(
       String emailAddress, password, firstName, lastName, phoneNumber) {
     AuthRepo.instance.createUserWithEmailAndPassword(emailAddress, password);
     UserRepo.instance.addUserDetails(
-      firstName.text,
-      lastName.text,
-      phoneNumber.text,
+      firstName.toString(),
+      lastName.toString(),
+      phoneNumber.toString(),
     );
 
     loginUser(emailAddress, password);
@@ -31,4 +32,6 @@ class AuthController extends GetxController {
     AuthController.instance.emailAddress.clear();
     AuthController.instance.password.clear();
   }
+
+
 }
