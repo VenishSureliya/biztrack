@@ -2,6 +2,7 @@ import "package:biztrack/backend/auth_controls.dart";
 import "package:biztrack/backend/form_validation.dart";
 import "package:biztrack/components/button.dart";
 import "package:biztrack/components/textfields.dart";
+import "package:biztrack/pages/login_page.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
@@ -127,7 +128,7 @@ class RegisterPage extends StatelessWidget {
                   GestureDetector(
                 onTap: () {
                   // AuthController.clearCredentials();
-                  Get.offAll(RegisterPage());
+                  Get.offAll(LoginPage());
                 },
                 child: Text(
                   "New User? Register Here",
