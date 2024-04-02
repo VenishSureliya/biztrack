@@ -6,11 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-<<<<<<< HEAD
 import 'package:provider/provider.dart';
-=======
->>>>>>> 985ea461bf006a178ef752047abde79e30b6d0a2
-
 import 'firebase_options.dart';
 
 void main() async {
